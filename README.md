@@ -1,17 +1,21 @@
 ## Foundry
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Signature Replay
+Signing messages off-chain and having a contract that requires that signature before executing a function is a useful technique.
 
-Foundry consists of:
+For example this technique is used to:
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- reduce number of transaction on chain
+- gas-less transaction, called meta transaction
 
-## Documentation
+## Vulnerability
+- Same signature can be used multiple times to execute a function. 
+- This can be  harmful if the signer's intention was to approve a transaction once.
 
-https://book.getfoundry.sh/
+
+## Preventative Techniques
+- Sign messages with nonce and address of the contract.
+
 
 ## Usage
 
